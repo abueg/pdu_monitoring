@@ -1,0 +1,105 @@
+[site_thresholds]
+[site_thresholds.voltage]
+bank_low_crit = "180"
+bank_low_warn = "190"
+bank_high_warn = "215"
+bank_high_crit = "225"
+phase_low_crit = "180"
+phase_low_warn = "190"
+phase_high_warn = "215"
+phase_high_crit = "225"
+unit_low_crit = "180"
+unit_low_warn = "190"
+unit_high_warn = "215"
+unit_high_crit = "225"
+ph2ph_low_crit = "180"
+ph2ph_low_warn = "190"
+ph2ph_high_warn = "215"
+ph2ph_high_crit = "225"
+
+
+[pdus]
+
+####################
+### PDUs are expected to have the following fields:
+# [pdus]
+# [pdus.<PDU-NAME>]
+# piggyback_host
+# ip
+# access = <"ssh" | "snmp">
+# apc_login (optional)
+# apc_secret (optional)
+# [pdus.<PDU-NAME>.thresholds]  # needs to be here, even if empty
+
+####################
+### SSH PDU examples
+
+[pdus.pdu1]      ## this PDU will use default voltage thresholds
+piggyback_host = "pdu1"
+ip = "ipaddress1"
+model = "APDU10452ME"
+access = "ssh"
+apc_login = "APCUSERNAME"
+apc_secret = "APCPASSWORD"
+[pdus.pdu1.thresholds]
+    ## current thresholds based off 80% of web GUI's thresholds
+    [pdus.pdu1.thresholds.current]
+        bank_high_warn = "11.2"
+        bank_high_crit = "12.8"
+        phase_high_warn = "32.8"
+        phase_high_crit = "38.4"
+        unit_high_warn = "98.4"
+        unit_high_crit = "115.2"
+
+[pdus.pdu2]
+piggyback_host = "pdu2"
+ip = "ipaddress2"
+model = "APDU10452ME"
+access = "ssh"
+apc_login = "APCUSERNAME"
+apc_secret = "APCPASSWORD"
+[pdus.pdu2.thresholds]
+    ## current thresholds based off 80% of web GUI's thresholds
+    [pdus.pdu2.thresholds.current]
+        bank_high_warn = "11.2"
+        bank_high_crit = "12.8"
+        phase_high_warn = "32.8"
+        phase_high_crit = "38.4"
+        unit_high_warn = "98.4"
+        unit_high_crit = "115.2"
+    [pdus.pdu2.thresholds.voltage]       # define PDU-specific thresholds here if you need to override default
+        bank_low_crit = "180"
+        bank_low_warn = "190"
+        bank_high_warn = "215"
+        bank_high_crit = "225"
+        phase_low_crit = "180"
+        phase_low_warn = "190"
+        phase_high_warn = "215"
+        phase_high_crit = "225"
+        unit_low_crit = "180"
+        unit_low_warn = "190"
+        unit_high_warn = "215"
+        unit_high_crit = "225"
+
+#####################
+### SNMP PDU example
+
+[pdus.pdu3]      # this PDU will use default thresholds
+piggyback_host = "pdu3"
+ip = "ipaddress3"
+model = "AP8868"
+access = "snmp"
+[pdus.pdu3.thresholds]
+
+
+[pdus.pdu4]
+piggyback_host = "pdu4"
+ip = "ipaddress4"
+model = "AP8868"
+access = "snmp"
+[pdus.pdu4.thresholds]
+    [pdus.pdu4.thresholds.voltage]       # define PDU-specific thresholds here if you need to override default
+        ph2ph_low_crit = "180"
+        ph2ph_low_warn = "190"
+        ph2ph_high_warn = "215"
+        ph2ph_high_crit = "225"
