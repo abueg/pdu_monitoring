@@ -125,7 +125,7 @@ P "Bank 6 current" current=0.0;:14;:16 Bank 6 current: 0.0 A
 For the following OID...
 
 ```
-snmpwalk -v 2c -c public 172.31.3.221 .1.3.6.1.4.1.318.1.1.26.13.1.1
+snmpwalk -v 2c -c public ${PDU_IP} .1.3.6.1.4.1.318.1.1.26.13.1.1
 
 SNMPv2-SMI::enterprises.318.1.1.26.13.1.1.1.1 = INTEGER: 1
 SNMPv2-SMI::enterprises.318.1.1.26.13.1.1.2.1 = INTEGER: 1
